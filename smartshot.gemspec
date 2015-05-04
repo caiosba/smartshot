@@ -26,6 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'gem-release'
 
   spec.add_dependency 'activesupport'
-  spec.add_dependency 'poltergeist', '~> 1.5.0'
-  spec.add_dependency 'faye-websocket', '~> 0.7.3'
+  spec.add_dependency 'poltergeist', '~> 1.6.0'
 end
