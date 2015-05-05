@@ -7,9 +7,9 @@ module Smartshot
       Capybara.register_driver :poltergeist do |app|
         Capybara::Poltergeist::Driver.new(app, defaults.merge(options))
       end
-      Capybara.run_server = false
+      Capybara.run_server = options.delete(:run_server) || false
       Capybara.current_driver = :poltergeist
-      Capybara.default_wait_time = 30
+      Capybara.default_wait_time = options.delete(:default_wait_time) || 30
     end
 
     def initialize(options = {})
