@@ -42,7 +42,7 @@ class SmartshotTest < MiniTest::Unit::TestCase
       waited = thumb(name)
       File.delete waited if File.exists? waited
       @smartshot.take_screenshot! url: 'http://ca.ios.ba/files/others/smartshot.html', output: waited, wait_for_element: 'p.Tweet-text',
-                                  frames_path: [0, 'child', 'twitter-widget-0']
+                                  frames_path: [0, 'child', 0]
       assert File.exists? waited
     end
 

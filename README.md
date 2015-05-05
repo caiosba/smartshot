@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/caiosba/smartshot.png)](https://travis-ci.org/caiosba/smartshot) 
 [![Gem Version](https://badge.fury.io/rb/smartshot.png)](http://badge.fury.io/rb/smartshot)
+[![Code Climate](https://codeclimate.com/repos/5548f1dae30ba02e92005039/badges/8d01f31688f88a488230/gpa.png)](https://codeclimate.com/repos/5548f1dae30ba02e92005039/feed)
 
 Captures a web page as a screenshot using Poltergeist, Capybara and PhantomJS.
 It can wait for elements and also dive into iframes, while the existing gems
