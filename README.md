@@ -1,5 +1,8 @@
 # Smartshot
 
+[![Build Status](https://travis-ci.org/caiosba/smartshot.png)](https://travis-ci.org/caiosba/smartshot) 
+[![Gem Version](https://badge.fury.io/rb/smartshot.png)](http://badge.fury.io/rb/smartshot)
+
 Captures a web page as a screenshot using Poltergeist, Capybara and PhantomJS.
 It can wait for elements and also dive into iframes, while the existing gems
 just wait for time or expect elements on the main window.
