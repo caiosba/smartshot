@@ -40,9 +40,12 @@ fetcher.take_screenshot! url: 'http://some.page.with/deep/iframes',
                          output: '/tmp/screenshot.png',
                          wait_for_element: 'div.embed',
                          frames_path: [0, 'name-of-an-iframe-inside-the-first-iframe', 'id-of-an-iframe-inside-the-previous-one']
+
+# It's also possible to just wait for some time (for example, 5 seconds)
+fetcher.take_screenshot! url: 'http://google.com', output: '/tmp/google.png', sleep: 5
 ```
 
-Besides the four options presented so far, it's possible to pass the same options accepted by
+Besides the five custom options presented so far, it's possible to pass the same options accepted by
 [Poltergeist's save screenshot method](https://github.com/teampoltergeist/poltergeist#taking-screenshots-with-some-extensions),
 for example:
 

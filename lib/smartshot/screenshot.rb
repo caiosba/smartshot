@@ -23,6 +23,10 @@ module Smartshot
         inside_frames options.delete(:frames_path) do
           page.find options.delete(:wait_for_element)
         end
+
+        timeout = options.delete(:sleep)
+        sleep timeout unless timeout.nil?
+
         page.driver.save_screenshot(options.delete(:output), options)
       rescue => e
         raise SmartshotError.new("Error: #{e.message.inspect}")

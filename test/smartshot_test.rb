@@ -56,6 +56,26 @@ class SmartshotTest < MiniTest::Unit::TestCase
     assert File.size(waited) > File.size(notwaited)
   end
 
+  def test_timeout
+    waited = notwaited = nil
+   
+    %w(withtime).each do |name|
+      waited = thumb(name)
+      File.delete waited if File.exists? waited
+      @smartshot.take_screenshot! url: 'http://ca.ios.ba/files/others/smartshot.html', output: waited, sleep: 10
+      assert File.exists? waited
+    end
+
+    %w(notime).each do |name|
+      notwaited = thumb(name)
+      File.delete notwaited if File.exists? notwaited
+      @smartshot.take_screenshot! url: 'http://ca.ios.ba/files/others/smartshot.html', output: notwaited
+      assert File.exists? notwaited
+    end
+
+    assert File.size(waited) > File.size(notwaited)
+  end
+
   def thumb(name)
     File.join(DATA_DIR, "#{name}.png")
   end
