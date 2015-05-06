@@ -3,10 +3,11 @@ require 'test_helper'
 class SmartshotTest < MiniTest::Unit::TestCase
 
   DATA_DIR = File.expand_path(File.dirname(__FILE__) + '/data')
+  PHANTOMJS_DIR = File.expand_path(File.dirname(__FILE__) + '/../bin/phantomjs-' + (1.size * 8).to_s)
 
   def setup
     FileUtils.mkdir_p(DATA_DIR) unless File.directory?(DATA_DIR)
-    @smartshot = Smartshot::Screenshot.new
+    @smartshot = Smartshot::Screenshot.new(phantomjs: PHANTOMJS_DIR)
   end
 
   def test_http

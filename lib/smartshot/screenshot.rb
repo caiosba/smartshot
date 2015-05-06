@@ -21,7 +21,9 @@ module Smartshot
       begin
         visit options.delete(:url)
         inside_frames options.delete(:frames_path) do
-          page.find options.delete(:wait_for_element)
+          [options.delete(:wait_for_element)].flatten.each do |element|
+            page.find element
+          end
         end
 
         timeout = options.delete(:sleep)

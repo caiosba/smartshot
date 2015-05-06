@@ -47,6 +47,9 @@ fetcher.take_screenshot! url: 'http://some.page.with/deep/iframes',
 
 # It's also possible to just wait for some time (for example, 5 seconds)
 fetcher.take_screenshot! url: 'http://google.com', output: '/tmp/google.png', sleep: 5
+
+# You can also wait for multiple elements instead of just one
+fetcher.take_screenshot! wait_for_element: ['p.first', 'div#container']
 ```
 
 Besides the five custom options presented so far, it's possible to pass the same options accepted by
