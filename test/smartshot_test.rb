@@ -27,14 +27,6 @@ class SmartshotTest < MiniTest::Unit::TestCase
     end
   end
 
-  def test_invalid_url
-    %w(nxdomain).each do |name|
-      assert_raises Smartshot::SmartshotError do
-        @smartshot.take_screenshot! url: "http://#{name}/", output: thumb(name)
-      end
-    end
-  end
-
   def test_iframe
     waited = notwaited = nil
    

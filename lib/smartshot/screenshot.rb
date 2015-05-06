@@ -22,7 +22,8 @@ module Smartshot
         visit options.delete(:url)
         inside_frames options.delete(:frames_path) do
           [options.delete(:wait_for_element)].flatten.each do |element|
-            page.find element
+            visible = (element =~ /^(link|meta)/).nil?
+            page.find element, visible: visible
           end
         end
 
