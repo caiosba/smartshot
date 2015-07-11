@@ -16,21 +16,25 @@ module Smartshot
       Smartshot::Screenshot.setup_capybara(options)
     end
 
-    def take_screenshot!(params = {})
+    def take_screenshot(params = {})
       options = { full: true, output: 'screenshot.png', url: 'http://ca.ios.ba', wait_for_element: 'body', frames_path: [] }.merge(params)
-      begin
-        visit options.delete(:url)
-        inside_frames options.delete(:frames_path) do
-          [options.delete(:wait_for_element)].flatten.each do |element|
-            visible = (element =~ /^(link|meta)/).nil?
-            page.find element, visible: visible
-          end
+      visit options.delete(:url)
+      inside_frames options.delete(:frames_path) do
+        [options.delete(:wait_for_element)].flatten.each do |element|
+          visible = (element =~ /^(link|meta)/).nil?
+          page.find element, visible: visible
         end
+      end
 
-        timeout = options.delete(:sleep)
-        sleep timeout unless timeout.nil?
+      timeout = options.delete(:sleep)
+      sleep timeout unless timeout.nil?
 
-        page.driver.save_screenshot(options.delete(:output), options)
+      page.driver.save_screenshot(options.delete(:output), options)
+    end
+
+    def take_screenshot!(params = {})
+      begin
+        take_screenshot(params)
       rescue => e
         raise SmartshotError.new("Error: #{e.message.inspect}")
       end
